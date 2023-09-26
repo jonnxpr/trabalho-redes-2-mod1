@@ -1,0 +1,351 @@
+IPs Sede: 192.198.0.0 (Gateway Padrão)
+
+VLAN 1 PARA CONFIGURAÇÂO DO SWITCH : 192.168.1.X
+
+2ª VLAN -> 192.168.2.X
+192.168.2.10 -> 192.168.2.40 (Máquinas)
+
+3ª VLAN -> 192.168.3.X
+192.168.3.10 -> 192.168.3.40 (Máquinas)
+
+WAN-> 192.168.4.100
+Access Point(1) -> 192.168.5.110
+
+WAN-> 192.168.6.100
+Access Point(1) -> 192.168.7.110
+
+Switch commands:
+1. Entraremos em modo privilegiado
+2. Entraremos em modo de configuração Global (comando “configure terminal”)
+3. Atribuiremos um nome ao Switch 2950-A (comando “hostname <Coloque-seunome>”)
+4. Atribuiremos o endereço ip 192.168.0.254 com a máscara 255.255.255.0 para
+a VLAN 1
+5. Setaremos o default gateway como 192.168.0.1
+6. Salvaremos as configurações na NVRAM
+
+enable
+configure terminal
+hostname Switch1
+interface vlan 1
+ip address 192.168.1.254 255.255.255.0
+exit
+ip default-gateway 192.168.1.1
+end
+wr mem
+
+
+enable
+configure terminal
+interface vlan 2
+ip address 192.168.2.1 255.255.255.0
+exit
+ip default-gateway 192.168.2.1
+end
+wr mem
+
+enable
+configure terminal
+interface vlan 3
+ip address 192.168.3.254 255.255.255.0
+exit
+ip default-gateway 192.168.3.1
+end
+wr mem
+
+
+Entraremos em modo privilegiado e veremos as configurações do seu switch.
+2. Entraremos em modo de configuração Global
+3. Atribuiremos nome a cada uma das VLANs
+4. Entraremos nas interfaces f0/2 e f0/3 para configuramos as portas no modo de
+acesso, ou seja, onde são ligados os “end devices” e em seguida informamos
+em qual VLAN aquela porta pertence.
+5. Salvaremos as configurações na NVRAM
+
+enable
+show vlan
+config terminal
+vlan 2
+name adm
+exit
+vlan 3
+name acad
+exit
+interface fastEthernet 0/2
+switchport mode access
+switchport access vlan 2
+exit
+interface fastEthernet 0/3
+switchport mode access
+switchport access vlan 2
+exit
+interface fastEthernet 0/4
+switchport mode access
+switchport access vlan 2
+exit
+interface fastEthernet 0/5
+switchport mode access
+switchport access vlan 2
+exit
+interface fastEthernet 0/6
+switchport mode access
+switchport access vlan 2
+exit
+interface fastEthernet 0/7
+switchport mode access
+switchport access vlan 2
+exit
+interface fastEthernet 0/8
+switchport mode access
+switchport access vlan 2
+exit
+interface fastEthernet 0/9
+switchport mode access
+switchport access vlan 2
+exit
+interface fastEthernet 0/10
+switchport mode access
+switchport access vlan 2
+exit
+interface fastEthernet 0/11
+switchport mode access
+switchport access vlan 2
+exit
+interface fastEthernet 0/12
+switchport mode access
+switchport access vlan 2
+exit
+interface fastEthernet 0/13
+switchport mode access
+switchport access vlan 3
+exit
+interface fastEthernet 0/14
+switchport mode access
+switchport access vlan 3
+exit
+interface fastEthernet 0/15
+switchport mode access
+switchport access vlan 3
+exit
+interface fastEthernet 0/16
+switchport mode access
+switchport access vlan 3
+exit
+interface fastEthernet 0/17
+switchport mode access
+switchport access vlan 3
+exit
+interface fastEthernet 0/18
+switchport mode access
+switchport access vlan 3
+exit
+interface fastEthernet 0/19
+switchport mode access
+switchport access vlan 3
+exit
+interface fastEthernet 0/20
+switchport mode access
+switchport access vlan 3
+exit
+interface fastEthernet 0/21
+switchport mode access
+switchport access vlan 2
+exit
+interface fastEthernet 0/22
+switchport mode access
+switchport access vlan 3
+end
+show vlan
+
+
+Truck:
+
+configure terminal
+interface fastEthernet 0/24
+switchport mode trunk
+end
+wr mem 
+
+
+
+
+================================================================================
+
+enable
+configure terminal
+hostname Switch2
+interface vlan 1
+ip address 192.168.1.253 255.255.255.0
+exit
+ip default-gateway 192.168.1.1
+end
+wr mem
+
+enable
+configure terminal
+interface vlan 2
+ip address 192.168.2.253 255.255.255.0
+exit
+ip default-gateway 192.168.2.1
+end
+wr mem
+
+enable
+configure terminal
+interface vlan 3
+ip address 192.168.3.253 255.255.255.0
+exit
+ip default-gateway 192.168.3.1
+end
+wr mem
+
+enable
+show vlan
+config terminal
+vlan 2
+name adm
+exit
+vlan 3
+name acad
+exit
+interface fastEthernet 0/2
+switchport mode access
+switchport access vlan 2
+exit
+interface fastEthernet 0/3
+switchport mode access
+switchport access vlan 2
+exit
+interface fastEthernet 0/4
+switchport mode access
+switchport access vlan 2
+exit
+interface fastEthernet 0/5
+switchport mode access
+switchport access vlan 2
+exit
+interface fastEthernet 0/6
+switchport mode access
+switchport access vlan 2
+exit
+interface fastEthernet 0/7
+switchport mode access
+switchport access vlan 2
+exit
+interface fastEthernet 0/8
+switchport mode access
+switchport access vlan 2
+exit
+interface fastEthernet 0/9
+switchport mode access
+switchport access vlan 2
+exit
+interface fastEthernet 0/10
+switchport mode access
+switchport access vlan 2
+exit
+interface fastEthernet 0/11
+switchport mode access
+switchport access vlan 2
+exit
+interface fastEthernet 0/12
+switchport mode access
+switchport access vlan 2
+exit
+interface fastEthernet 0/13
+switchport mode access
+switchport access vlan 3
+exit
+interface fastEthernet 0/14
+switchport mode access
+switchport access vlan 3
+exit
+interface fastEthernet 0/15
+switchport mode access
+switchport access vlan 3
+exit
+interface fastEthernet 0/16
+switchport mode access
+switchport access vlan 3
+exit
+interface fastEthernet 0/17
+switchport mode access
+switchport access vlan 3
+exit
+interface fastEthernet 0/18
+switchport mode access
+switchport access vlan 3
+exit
+interface fastEthernet 0/19
+switchport mode access
+switchport access vlan 3
+exit
+interface fastEthernet 0/20
+switchport mode access
+switchport access vlan 3
+exit
+interface fastEthernet 0/21
+switchport mode access
+switchport access vlan 2
+exit
+interface fastEthernet 0/22
+switchport mode access
+switchport access vlan 3
+end
+show vlan
+
+configure terminal
+interface GigabitEthernet0/1
+switchport mode trunk
+end
+wr mem 
+
+==================================================================================
+
+Router SEDE :
+
+no Switch ligado ao router :
+
+enable
+configure terminal
+interface FastEthernet 0/24
+switchport mode trunk
+end
+wr mem
+
+Router :
+
+Would you like to enter the initial configuration dialog? [yes/no]: no
+
+enable
+configure terminal
+hostname SEDE
+interface fastEthernet 0/0
+ip address 192.168.0.1 255.255.255.0
+no shutdown
+end
+wr mem
+
+Would you like to enter the initial configuration dialog? [yes/no]: no
+
+enable
+configure terminal
+interface fastEthernet 0/0.1
+encapsulation dot1q 1
+ip addr 192.168.1.1 255.255.255.0
+exit
+interface fastEthernet 0/0.2
+encapsulation dot1q 2
+ip addr 192.168.2.1 255.255.255.0
+exit
+interface fastEthernet 0/0.3
+encapsulation dot1q 3
+ip addr 192.168.3.1 255.255.255.0
+exit
+
+interface f0/0
+
+no shutdown
+end
+wr mem
+
+
