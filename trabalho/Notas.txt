@@ -1,5 +1,0 @@
-Falta:
--Unidades de Rede WIFI
--Bônus – Ponto extra. As Redes WI-FI para convidados podem utilizar NAT e não
-devem pingar a Rede Administrativa da empresa.
--Pacotes da filial2 entre uma vlan e outra nao estao comunicando. 
